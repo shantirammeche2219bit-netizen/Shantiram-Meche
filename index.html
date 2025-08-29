@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shantiram - Portfolio</title>
+    <link rel="shortcut icon" href="pro2.png" type="image/x-icon">
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+            transform: scale(1.1);
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        /* About section */
+        .about-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        .about-content {
+            text-align: left;
+            max-width: 500px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            animation: slideIn 1s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        /* Projects section */
+        .projects-section {
+            padding: 4rem 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-card h3 {
+            padding: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .project-card p {
+            padding: 0 1rem;
+            color: #666;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Contact section */
+        .contact-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            padding: 0.75rem 1.5rem;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info a:nth-child(1) {
+            background-color: #EA4335;
+        }
+
+        .contact-info a:nth-child(2) {
+            background-color: #1877F2;
+        }
+
+        .contact-info a:nth-child(3) {
+            background-color: #25D366;
+        }
+
+        .contact-info a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo" style="margin-top: 0.5rem;">
+                <a href="#about" class="logo-link" style="font-size: 1.5rem; font-weight: 600; color: #007bff; text-decoration: none; padding: 0.25rem 0.5rem;">SR</a>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-section="about">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link" data-section="projects">
+                        <i class="fas fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-section="contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="about-section">
+            <h1>Welcome, I'm Shantiram</h1>
+            <div class="profile-container">
+                <img src="me.jpg" alt="Shantiram's Profile Picture" class="profile-pic">
+                <div class="about-content">
+                    <h2>Full Stack Software Developer</h2>
+                    <p>A passionate software developer with expertise in developing scalable web applications and enterprise solutions. Leveraging modern frameworks and best practices, I create robust, efficient, and user-centric digital experiences that drive business value.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <article class="project-card">
+                    <img src="pro1.png" alt="Project 1 Screenshot">
+                    <h3>Project Demo</h3>
+                    <p>This project is a demo project. It is a simple project. It is a project where I have used HTML, CSS, and JavaScript. It is a project where I have used React.js, Node.js, and Express.js. It is a project where I have used MongoDB.</p>
+                    <a href="https://shantirammeche2219bit-netizen.github.io/shantiram_project_demo/" class="project-link" title="click me">View Project</a>
+                </article>
+
+                <article class="project-card">
+                    <img src="pro2.png" alt="Project 2 Screenshot">
+                    <h3>PVT Traders and Suppliers</h3>
+                    <p>This project is underdevelopment. It is about a Traders and Suppliers website. It is a website where traders can sell their products and suppliers can buy their products. It is a full stack project. it's a project where MongoDB is used.</p>
+                    <a href="https://shantirammeche2219bit-netizen.github.io/shantiram_project_traders_and_suppliers/" class="project-link" title="click me">View Project</a>
+                </article>
+
+                <article class="project-card">
+                    <img src="1.jpg" alt="Project 3 Screenshot">
+                    <h3>Planning project</h3>
+                    <p>A new up coming project is on the way a interior desigining desing has already come out . we are on the verge of bringing the new interactive with a minimilist plus user-friendly websites . it's a project where js is highly used</p>
+                    <a href="photo.html" class="project-link" title="click me">Coming Soon</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <a href="mailto:surajmechesuraj@gmail.com"><i class="fas fa-envelope"></i> Email Me</a>
+                <a href="https://www.facebook.com/share/16xKQgzcYf/"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://wa.me/9815959883"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shantiram. All rights reserved. | Design by Shantiram Meche | Email: surajmechesuraj@gmail.com</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
